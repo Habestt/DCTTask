@@ -1,5 +1,4 @@
-﻿using DCTTask.API;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,16 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DCTTask
+namespace DCTTask.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для Coins.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Coins : Page
     {
-        public MainWindow()
+        public Coins()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
     }
 }
