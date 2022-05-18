@@ -3,15 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
-        xmlns:local="clr-namespace:DCTTask"        
+        xmlns:local="clr-namespace:DCTTask" 
+        xmlns:pages="clr-namespace:DCTTask.Pages"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="10, 20">
+        Title="MainWindow" Height="700" Width="1200">
+    <Grid Margin="10, 20" >
         <StackPanel>
-            <Button Content="All coins" Width="80" Height="30" HorizontalAlignment="Left" />
-            <Button Content="Trending" Width="80" Height="30" HorizontalAlignment="Left" />
+            <Button Content="All coins" Width="110" Height="60" HorizontalAlignment="Left" Command="{Binding AllCoinsBtn}" />
+            <Button Content="Top10" Width="110" Height="60" HorizontalAlignment="Left" Command="{Binding TrendingBtn}" />
         </StackPanel>
-        
-        <Frame Source="Pages/Trending.xaml" Margin="90,0,0,0" />
+
+
+        <Frame Content="{Binding CurrentPage}" Margin="120,0,0,0" />
+
+
     </Grid>
 </Window>

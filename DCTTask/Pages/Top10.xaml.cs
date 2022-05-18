@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DCTTask.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,21 @@ using System.Windows.Shapes;
 namespace DCTTask.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Coins.xaml
+    /// Логика взаимодействия для Top10.xaml
     /// </summary>
-    public partial class Coins : Page
+    public partial class Top10 : Page
     {
-        public Coins()
+        public Top10()
         {
             InitializeComponent();
+            GetData();
+        }
+
+        public async void GetData()
+        {
+            CoinService coinService = new CoinService();            
+            var Coins = await coinService.GetTop10();
+            DataGrid1.ItemsSource = Coins;
         }
     }
 }

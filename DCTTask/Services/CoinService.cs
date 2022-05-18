@@ -1,5 +1,6 @@
 ﻿using DCTTask.API;
 using DCTTask.Models;
+using DCTTask.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,30 +13,20 @@ namespace DCTTask.Services
     {
         public async Task<IEnumerable<Coin>> GetAllCoins()
         {
-            string url = "coins/markets?vs_currency=usd";
-            var da = new DataAccess<Coin>();
+            string url = "assets";
+            var da = new DataAccess<Data<Coin>>();
             var coins = await da.GetData(url);
 
-            return coins;
+            return coins.data;
         }
 
-        public async Task<IEnumerable<Coin>> GetTrendingCoins()
+        public async Task<IEnumerable<Coin>> GetTop10()
         {
-            string url = "search/trending";
-            var da = new DataAccess<Coin>();
+            string url = "assets";
+            var da = new DataAccess<Data<Coin>>();
             var coins = await da.GetData(url);
 
-            return coins;
+            return coins.data.Take(10);
         }
-
-        public async Task<IEnumerable<Coin>> GetCoin(string id)
-        {
-            string url = $"search/coins/{id}";
-            var da = new DataAccess<Coin>();
-            var coin = await da.GetData(url);
-
-            return coin;
-        }
-
     }
 }

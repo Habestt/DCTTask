@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DCTTask.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,20 @@ using System.Windows.Shapes;
 namespace DCTTask.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Trending.xaml
+    /// Логика взаимодействия для AllCoins.xaml
     /// </summary>
-    public partial class Trending : Page
+    public partial class AllCoins : Page
     {
-        public Trending()
+        public AllCoins()
         {
             InitializeComponent();
+        }
+
+        public async void GetData()
+        {
+            CoinService coinService = new CoinService();
+            var Coins = await coinService.GetAllCoins();
+            DataGrid1.ItemsSource = Coins;
         }
     }
 }

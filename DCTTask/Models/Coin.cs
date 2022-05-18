@@ -11,7 +11,7 @@ namespace DCTTask.Models
         public string id { get; set; }
         public string name { get; set; }
         public double priceUsd { get; set; }
-        public double rank { get; }
+        public double rank { get; set; }
         public double volumeUsd24Hr { get; set; }
         public double changePercent24Hr { get; set; }        
     }
