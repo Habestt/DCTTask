@@ -20,13 +20,14 @@ namespace DCTTask.Services
             return coins.data;
         }
 
-        public async Task<IEnumerable<Coin>> GetTop10()
+        public async Task<IEnumerable<Coin>> GetSearchedCoins(string name)
         {
-            string url = "assets";
+            string url = $"assets?search={name}";
             var da = new DataAccess<Data<Coin>>();
             var coins = await da.GetData(url);
 
-            return coins.data.Take(10);
+            return coins.data;
         }
+
     }
 }

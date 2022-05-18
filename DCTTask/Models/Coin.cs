@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DCTTask.Models
 {
-    internal class Coin
+    public class Coin
     {
         public string? id { get; set; }
         public string? name { get; set; }

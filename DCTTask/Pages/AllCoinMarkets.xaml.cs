@@ -29,9 +29,17 @@ namespace DCTTask.Pages
 
         public async void GetData(string id)
         {
-            MarketService marketService = new MarketService();
-            var Markets = await marketService.GetCoinMarkets($"{id}");
-            DataGrid1.ItemsSource = Markets;
+            try
+            {
+                MarketService marketService = new MarketService();
+                var Markets = await marketService.GetCoinMarkets($"{id}");
+                DataGrid1.ItemsSource = Markets;
+            }
+            catch
+            {
+                DataGrid1.ItemsSource = null;
+            }
+            
         }
     }
 }

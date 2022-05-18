@@ -28,6 +28,12 @@ namespace DCTTask.Pages
             GetData();
         }
 
+        public AllCoins(IEnumerable<Coin> coins)
+        {
+            InitializeComponent();
+            DataGrid1.ItemsSource = coins;
+        }
+
         public async void GetData()
         {
             CoinService coinService = new CoinService();
@@ -40,6 +46,21 @@ namespace DCTTask.Pages
             Coin? coin = button.DataContext as Coin;
             string id = coin.id;
             NavigationService.Navigate(new AllCoinMarkets(id));
+        }
+
+        private async void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CoinService coinService = new CoinService();
+            var data = await coinService.GetSearchedCoins(SearchTxt.Text);
+            DataGrid1.ItemsSource = data;
+        }
+
+        private void SearchTxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SearchBtn_Click(this, null);
+            }
         }
     }
 }
