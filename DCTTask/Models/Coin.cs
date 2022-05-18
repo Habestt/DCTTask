@@ -10,10 +10,9 @@ namespace DCTTask.Models
     {
         public string id { get; set; }
         public string name { get; set; }
-        public double current_price { get; set; }
-        public double market_cap_rank { get; set; }
-        public double total_volume { get; set; }
-        public double price_change_24h { get; set; }
-        
+        public double priceUsd { get; set; }
+        public double rank { get; }
+        public double volumeUsd24Hr { get; set; }
+        public double changePercent24Hr { get; set; }        
     }
 }
