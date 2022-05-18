@@ -13,7 +13,7 @@ namespace DCTTask.Services
     {
         public async Task<IEnumerable<Coin>> GetAllCoins()
         {
-            string url = "assets";
+            string url = "assets?limit=500";
             var da = new DataAccess<Data<Coin>>();
             var coins = await da.GetData(url);
 

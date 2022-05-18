@@ -8,8 +8,7 @@ namespace DCTTask.Models
 {
     internal class Market
     {
-        public string coin_id { get; set; }        
-        public string name { get; set; }
-        public double converted_last { get; set; }
+        public string exchangeId { get; set; }        
+        public string priceUsd { get; set; }        
     }
 }

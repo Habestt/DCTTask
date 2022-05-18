@@ -43,14 +43,14 @@
                     <GridViewColumn Header="Price">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding priceUsd}" />
+                                <TextBlock Text="{Binding priceUsd, StringFormat={}{0:C}}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Volume 24Hr">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding volumeUsd24Hr}" />
+                                <TextBlock Text="{Binding volumeUsd24Hr, StringFormat={}{0:C}}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

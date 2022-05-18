@@ -24,6 +24,7 @@ namespace DCTTask.Pages
         public AllCoins()
         {
             InitializeComponent();
+            GetData();
         }
 
         public async void GetData()

@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" FontSize="24" Text="Trending" />
+            <TextBlock Grid.Column="0" FontSize="24" Text="All Coins" />
             <TextBox Grid.Column="1" FontSize="24" Margin="0 0 50 0" />
         </Grid>
         <ListView x:Name="DataGrid1" Grid.Row="1" Margin="0 20 0 0" MaxHeight="500" MaxWidth="700">
@@ -43,7 +43,7 @@
                     <GridViewColumn Header="Price">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding priceUsd}" />
+                                <TextBlock Text="{Binding priceUsd, StringFormat={}{0:C}}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
