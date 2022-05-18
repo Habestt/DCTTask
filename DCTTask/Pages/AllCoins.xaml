@@ -50,7 +50,7 @@
                     <GridViewColumn Header="Volume 24Hr">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding volumeUsd24Hr}" />
+                                <TextBlock Text="{Binding volumeUsd24Hr, StringFormat={}{0:C}}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -64,7 +64,7 @@
                     <GridViewColumn Header="Markets">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Markets" />
+                                <Button Content="Markets" Click="GetMarketsBtn_Click" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

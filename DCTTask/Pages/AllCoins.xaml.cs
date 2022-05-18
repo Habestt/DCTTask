@@ -1,4 +1,5 @@
-﻿using DCTTask.Services;
+﻿using DCTTask.Models;
+using DCTTask.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,13 @@ namespace DCTTask.Pages
             CoinService coinService = new CoinService();
             var Coins = await coinService.GetAllCoins();
             DataGrid1.ItemsSource = Coins;
+        }
+        private void GetMarketsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Button? button = sender as Button;
+            Coin? coin = button.DataContext as Coin;
+            string id = coin.id;
+            NavigationService.Navigate(new AllCoinMarkets(id));
         }
     }
 }

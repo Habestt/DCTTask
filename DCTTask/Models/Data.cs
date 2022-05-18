@@ -8,6 +8,6 @@ namespace DCTTask.Models
 {
     internal class Data<TModel> where TModel : class
     {
-        public ICollection<TModel> data { get; set; }        
+        public ICollection<TModel>? data { get; set; }        
     }
 }

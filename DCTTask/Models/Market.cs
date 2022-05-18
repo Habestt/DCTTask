@@ -8,7 +8,9 @@ namespace DCTTask.Models
 {
     internal class Market
     {
-        public string exchangeId { get; set; }        
-        public string priceUsd { get; set; }        
+        public string? exchangeId { get; set; }
+        public string? baseSymbol { get; set; }
+        public string? quoteSymbol { get; set; }
+        public double? priceUsd { get; set; }
     }
 }

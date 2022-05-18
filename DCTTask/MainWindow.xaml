@@ -14,7 +14,7 @@
         </StackPanel>
 
 
-        <Frame Content="{Binding CurrentPage}" Margin="120,0,0,0" NavigationUIVisibility="Hidden" />
+        <Frame x:Name="PageFrame" Content="{Binding CurrentPage}" Margin="120,0,0,0" NavigationUIVisibility="Hidden" />
 
 
     </Grid>
