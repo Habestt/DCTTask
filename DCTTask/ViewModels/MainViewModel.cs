@@ -1,4 +1,5 @@
-﻿using DCTTask.Models;
+﻿using DCTTask.Commands;
+using DCTTask.Models;
 using DCTTask.Pages;
 using DCTTask.Services;
 using System;
@@ -13,15 +14,27 @@ namespace DCTTask.ViewModels
 {
     internal class MainViewModel : ViewModelBase
     {
-        public ICommand AllCoinsBtn { get; }
-        public ICommand TrendingBtn { get; }
+        public ICommand UpdatePage { get; set; }
+        public ICommand Top10Btn { get; set; }
 
-        public Page CurrentPage { get; set; }
+        private Page _currentPage;
+        public Page CurrentPage {
+            get
+            {
+                return _currentPage;
+            }
+            set
+            {
+                _currentPage = value;
+                OnPropertyChanged(nameof(CurrentPage));
+            } 
+        }
         
         
         public MainViewModel()
-        {            
+        {
             CurrentPage = new Top10();
+            UpdatePage = new UpdatePageCommand(this);
         }        
     }
 }
