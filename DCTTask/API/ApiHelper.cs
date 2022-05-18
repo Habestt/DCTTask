@@ -15,7 +15,7 @@ namespace DCTTask.API
         public static void InitializeClient()
         {
             ApiClient = new HttpClient();
-            ApiClient.BaseAddress = new Uri("https://api.coingecko.com/api/v3/");
+            ApiClient.BaseAddress = new Uri("https://api.coincap.io/v2/");
             ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
