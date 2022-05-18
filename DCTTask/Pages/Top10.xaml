@@ -17,13 +17,15 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" FontSize="24" Text="Trending" />
-            <TextBox Grid.Column="1" FontSize="24" Margin="0 0 50 0" />
+            <TextBlock Grid.Column="0" FontSize="24" Text="Binance Trending" />
+            <TextBox x:Name="SearchTxt" FontSize="24" Grid.Column="1" KeyDown="SearchTxt_KeyDown" />
+            <Button x:Name="SearchBtn" Grid.Column="2" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="50" Height="34" Click="SearchBtn_Click"/>
         </Grid>
-        <ListView x:Name="DataGrid1" Grid.Row="1" Margin="0 20 0 0" MaxHeight="500" MaxWidth="700">
+        <ListView x:Name="DataGrid1" Grid.Row="1" Margin="0 20 0 0" MaxHeight="500" MaxWidth="350">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Rank">
@@ -33,10 +35,21 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Name">
+                    <GridViewColumn Header="Market name">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding name}" />
+                                <TextBlock Text="{Binding exchangeId}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Pair">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Run Text="{Binding baseSymbol}" />
+                                    <Run Text="/" />
+                                    <Run Text="{Binding quoteSymbol}" />
+                                </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -46,28 +59,7 @@
                                 <TextBlock Text="{Binding priceUsd, StringFormat={}{0:C}}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Volume 24Hr">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding volumeUsd24Hr, StringFormat={}{0:C}}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Change Percent 24Hr">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text= "{Binding changePercent24Hr, StringFormat={}{0:#0.00'%'}}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Markets">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Markets" Click="GetMarketsBtn_Click" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    </GridViewColumn>                     
                 </GridView>
             </ListView.View>
         </ListView>

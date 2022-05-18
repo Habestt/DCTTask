@@ -31,17 +31,26 @@ namespace DCTTask.Pages
 
         public async void GetData()
         {
-            CoinService coinService = new CoinService();            
-            var Coins = await coinService.GetTop10();
-            DataGrid1.ItemsSource = Coins;
+            MarketService marketService = new MarketService();            
+            var Pairs = await marketService.GetTop10Coins("binance");
+            DataGrid1.ItemsSource = Pairs;
         }
 
-        private void GetMarketsBtn_Click(object sender, RoutedEventArgs e)
-        {            
-            Button? button = sender as Button;
-            Coin? coin = button.DataContext as Coin;
-            string id = coin.id;            
-            NavigationService.Navigate(new AllCoinMarkets(id));
+        private async void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CoinService coinService = new CoinService();
+            var data = await coinService.GetSearchedCoins(SearchTxt.Text);
+            NavigationService.Navigate(new AllCoins(data));
         }
+
+        private void SearchTxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SearchBtn_Click(this, null);
+            }
+        }
+
+        
     }
 }
