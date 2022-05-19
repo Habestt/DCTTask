@@ -37,6 +37,7 @@ namespace DCTTask.Pages
         {
             InitializeComponent();
             DataGrid1.ItemsSource = coins;
+            Row3.Height = new GridLength(0);
         }
 
         private async void GetData(int offSet)
@@ -60,6 +61,7 @@ namespace DCTTask.Pages
             CoinService coinService = new CoinService();
             var data = await coinService.GetSearchedCoins(SearchTxt.Text);
             DataGrid1.ItemsSource = data;
+            Row3.Height = new GridLength(0);
         }
 
         private void SearchTxt_KeyDown(object sender, KeyEventArgs e)

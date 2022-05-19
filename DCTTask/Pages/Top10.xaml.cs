@@ -40,7 +40,7 @@ namespace DCTTask.Pages
         {
             CoinService coinService = new CoinService();
             var data = await coinService.GetSearchedCoins(SearchTxt.Text);
-            NavigationService.Navigate(new AllCoins(data));
+            NavigationService.Navigate(new AllCoins(data));            
         }
 
         private void SearchTxt_KeyDown(object sender, KeyEventArgs e)

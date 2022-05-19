@@ -14,8 +14,7 @@ namespace DCTTask.ViewModels
 {
     internal class MainViewModel : ViewModelBase
     {
-        public ICommand UpdatePage { get; set; }
-        public ICommand Top10Btn { get; set; }
+        public ICommand UpdatePage { get; set; }            
 
         private Page _currentPage;
         public Page CurrentPage {
@@ -33,8 +32,8 @@ namespace DCTTask.ViewModels
         
         public MainViewModel()
         {
-            CurrentPage = new Top10();
-            UpdatePage = new UpdatePageCommand(this);
+            CurrentPage = new Top10();            
+            UpdatePage = new UpdatePageCommand(this);            
         }        
     }
 }
