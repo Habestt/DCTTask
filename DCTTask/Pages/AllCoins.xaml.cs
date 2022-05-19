@@ -22,10 +22,15 @@ namespace DCTTask.Pages
     /// </summary>
     public partial class AllCoins : Page
     {
+        private const int limit = 20;
+        public int OffSet { get; set; }
+        public int PageCounter { get; set; } = 1;
+
         public AllCoins()
         {
             InitializeComponent();
-            GetData();
+            GetData(OffSet);
+            PrevBtn.IsEnabled = false;
         }
 
         public AllCoins(IEnumerable<Coin> coins)
@@ -34,11 +39,13 @@ namespace DCTTask.Pages
             DataGrid1.ItemsSource = coins;
         }
 
-        public async void GetData()
-        {
+        private async void GetData(int offSet)
+        {            
             CoinService coinService = new CoinService();
-            var Coins = await coinService.GetAllCoins();
+            var Coins = await coinService.GetAllCoins(limit, offSet);
+            if (Coins.Any(x => Coins.Count() != limit)) NextBtn.IsEnabled = false;
             DataGrid1.ItemsSource = Coins;
+            PageNumberLbl.Content = $"{PageCounter}";
         }
         private void GetMarketsBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -61,6 +68,23 @@ namespace DCTTask.Pages
             {
                 SearchBtn_Click(this, null);
             }
+        }
+
+        private async void NextBtn_Click(object sender, RoutedEventArgs e)
+        { 
+            PrevBtn.IsEnabled = true;
+            OffSet += 20;
+            PageCounter++;
+            GetData(OffSet);            
+        }
+
+        private async void PrevBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (PageCounter == 2) PrevBtn.IsEnabled = false;
+            NextBtn.IsEnabled = true;
+            OffSet -= 20;
+            PageCounter--;
+            GetData(OffSet);            
         }
     }
 }

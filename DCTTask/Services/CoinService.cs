@@ -11,9 +11,9 @@ namespace DCTTask.Services
 {
     internal class CoinService
     {
-        public async Task<IEnumerable<Coin>> GetAllCoins()
+        public async Task<IEnumerable<Coin>> GetAllCoins(int limit, int offSet)
         {
-            string url = "assets?limit=500";
+            string url = $"assets?limit={limit}&offset={offSet}";
             var da = new DataAccess<Data<Coin>>();
             var coins = await da.GetData(url);
 
